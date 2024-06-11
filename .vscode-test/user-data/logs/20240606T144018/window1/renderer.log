@@ -1,0 +1,10 @@
+2024-06-06 14:40:20.688 [info] Started initializing default profile extensions in extensions installation folder. file:///c%3A/Users/ado3/test/.vscode-test/extensions
+2024-06-06 14:40:20.980 [info] Completed initializing default profile extensions in extensions installation folder. file:///c%3A/Users/ado3/test/.vscode-test/extensions
+2024-06-06 14:40:21.004 [info] Loading development extension at c:\Users\ado3\test
+2024-06-06 14:40:21.401 [info] Started local extension host with pid 16176.
+2024-06-06 14:40:22.770 [info] ["start",{"total":1}]
+2024-06-06 14:40:22.771 [info] ["suiteStart",{"path":[]}]
+2024-06-06 14:40:22.791 [info] ["suiteStart",{"path":["Extension Test Suite"],"file":"c:\\Users\\ado3\\test\\out\\test\\extension.test.js"}]
+2024-06-06 14:40:22.837 [info] ["testStart",{"path":["Extension Test Suite","Sample test"],"currentRetry":0,"file":"c:\\Users\\ado3\\test\\out\\test\\extension.test.js","speed":"fast"}]
+2024-06-06 14:40:22.840 [info] ["pass",{"path":["Extension Test Suite","Sample test"],"duration":0,"currentRetry":0,"file":"c:\\Users\\ado3\\test\\out\\test\\extension.test.js","speed":"fast"}]
+2024-06-06 14:40:22.841 [info] ["end",{}]

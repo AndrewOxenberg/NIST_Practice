@@ -1,0 +1,26 @@
+2024-06-10 11:53:14.216 [info] Started local extension host with pid 11596.
+2024-06-10 11:53:14.227 [info] Loading development extension at c:\Users\ado3\test
+2024-06-10 11:53:15.456 [info] [0m%s%s[0m  
+2024-06-10 11:53:15.457 [info] [0m%s%s[0m    Extension Test Suite
+2024-06-10 11:53:15.532 [info]   [32m  ✔[0m[90m %s[0m Sample test
+2024-06-10 11:53:15.535 [info]   [31m  %d) %s[0m 1 setDescription Output
+2024-06-10 11:53:15.536 [info] [92m [0m[32m %d passing[0m[90m (%s)[0m 1 80ms
+2024-06-10 11:53:15.537 [info] [31m  %d failing[0m 1
+2024-06-10 11:53:15.538 [info] [0m  %s) %s:
+%s[0m[90m
+%s
+[0m 1 Extension Test Suite
+       setDescription Output 
+      [31mAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'Typescript'
+- 'TypeScript'
+       ^[0m
+      [32m+ expected[0m [31m- actual[0m
+
+      [31m-Typescript[0m
+      [32m+TypeScript[0m
+         	at Context.<anonymous> (C:\Users\ado3\test\out\test\extension.test.js:38:16)
+  	at process.processImmediate (node:internal/timers:478:21)
+2024-06-10 11:53:15.539 [error] 1 test failed.

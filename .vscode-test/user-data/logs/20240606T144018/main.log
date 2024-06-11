@@ -1,0 +1,5 @@
+2024-06-06 14:40:18.806 [error] Error: Error mutex already exists
+    at bt.W (c:\Users\ado3\test\.vscode-test\vscode-win32-x64-archive-1.90.0\resources\app\out\vs\code\electron-main\main.js:110:70767)
+2024-06-06 14:40:18.807 [info] update#setState disabled
+2024-06-06 14:40:18.807 [info] update#ctor - updates are disabled by the environment
+2024-06-06 14:40:22.856 [info] Extension host with pid 16176 exited with code: 0, signal: unknown.

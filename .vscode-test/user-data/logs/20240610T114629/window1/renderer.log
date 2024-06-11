@@ -1,0 +1,7 @@
+2024-06-10 11:46:31.043 [info] Started local extension host with pid 11092.
+2024-06-10 11:46:31.052 [info] Loading development extension at c:\Users\ado3\test
+2024-06-10 11:46:32.297 [info] [0m%s%s[0m  
+2024-06-10 11:46:32.298 [info] [0m%s%s[0m    Extension Test Suite
+2024-06-10 11:46:32.361 [info]   [32m  ✔[0m[90m %s[0m Sample test
+2024-06-10 11:46:32.362 [info]   [32m  ✔[0m[90m %s[0m setDescription Output
+2024-06-10 11:46:32.364 [info] [92m [0m[32m %d passing[0m[90m (%s)[0m 2 84ms

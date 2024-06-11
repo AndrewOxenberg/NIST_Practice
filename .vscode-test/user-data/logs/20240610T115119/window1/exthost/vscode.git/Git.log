@@ -1,0 +1,6 @@
+2024-06-10 11:51:21.697 [info] Log level: Info
+2024-06-10 11:51:21.697 [info] Validating found git in: "C:\Program Files\Git\cmd\git.exe"
+2024-06-10 11:51:21.697 [info] Validating found git in: "C:\Program Files (x86)\Git\cmd\git.exe"
+2024-06-10 11:51:21.697 [info] Validating found git in: "C:\Program Files\Git\cmd\git.exe"
+2024-06-10 11:51:21.697 [info] Validating found git in: "C:\Users\ado3\AppData\Local\Programs\Git\cmd\git.exe"
+2024-06-10 11:51:21.943 [info] Using git "2.45.2.windows.1" from "C:\Users\ado3\AppData\Local\Programs\Git\cmd\git.exe"

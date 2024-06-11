@@ -1,0 +1,8 @@
+2024-06-10 11:23:37.422 [info] Started local extension host with pid 8872.
+2024-06-10 11:23:37.433 [info] Loading development extension at c:\Users\ado3\test
+2024-06-10 11:23:38.757 [info] ["start",{"total":2}]
+2024-06-10 11:23:38.758 [info] ["suiteStart",{"path":[]}]
+2024-06-10 11:23:38.777 [info] ["suiteStart",{"path":["Extension Test Suite"],"file":"c:\\Users\\ado3\\test\\out\\test\\extension.test.js"}]
+2024-06-10 11:23:38.815 [info] ["testStart",{"path":["Extension Test Suite","setDescription Output"],"currentRetry":0,"file":"c:\\Users\\ado3\\test\\out\\test\\extension.test.js","speed":"fast"}]
+2024-06-10 11:23:38.816 [info] ["pass",{"path":["Extension Test Suite","setDescription Output"],"duration":0,"currentRetry":0,"file":"c:\\Users\\ado3\\test\\out\\test\\extension.test.js","speed":"fast"}]
+2024-06-10 11:23:38.817 [info] ["end",{}]
