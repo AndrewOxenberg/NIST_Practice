@@ -28,7 +28,7 @@ jobs:
           git branch -r
           git checkout main
 
-      - run: git merge ${{ github.sha }}
+      - run: git merge ${{ github.head_ref }} --allow-unrelated-histories
 
       - run: git push origin main
         env: 
