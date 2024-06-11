@@ -30,7 +30,9 @@ jobs:
 
       - run: git merge ${{ github.head_ref }} --allow-unrelated-histories
 
-      - run: git push https://${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/AndrewOxenberg/NIST_Practice.git main
+      - run: git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
 
