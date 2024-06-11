@@ -18,10 +18,15 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "adoxenberg@gmail.com"
 
+      # - run: |
+
+      #     git checkout main
+      #     git merge ${{ github.sha }}
+
       - run: |
           git fetch origin main
+          git branch -r
           git checkout main
-          git merge ${{ github.sha }}
 
       - run: git push origin main
         env: 
