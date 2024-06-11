@@ -19,6 +19,7 @@ jobs:
           git config --global user.email "adoxenberg@gmail.com"
 
       - run: |
+          git fetch origin main
           git checkout main
           git merge ${{ github.sha }}
 
