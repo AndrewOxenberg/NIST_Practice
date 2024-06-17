@@ -4,6 +4,7 @@ import * as path from 'path';
 import * as readdirSync from 'fs';
 
 import { setDescription } from './utils';
+import { File } from './utils';
 
 export class TopLevelProvider implements vscode.TreeDataProvider<File> {
 
@@ -12,7 +13,9 @@ export class TopLevelProvider implements vscode.TreeDataProvider<File> {
     private _onDidChangeTreeData: vscode.EventEmitter<File | undefined | void> = new vscode.EventEmitter<File | undefined | void>();
     readonly  onDidChangeTreeData: vscode.Event<File | undefined | void> = this._onDidChangeTreeData.event;
 
-    constructor(private workspaceRoot: string) {}
+    constructor(private workspaceRoot: string) {
+        this.workspaceRoot = workspaceRoot;
+    }
    
 
     refresh(): void {
@@ -21,13 +24,12 @@ export class TopLevelProvider implements vscode.TreeDataProvider<File> {
 
     getChildren(element?: File | undefined): Thenable<File[]> {
 
-        const files = this.getFiles();
-        
-        // files.forEach( element => console.log(element.tooltip));
-
-        const result = Promise.resolve(files);
-
-        return result;
+        if (element) {
+            return Promise.resolve(this.getFiles(element.root));
+        }
+        else {
+            return Promise.resolve(this.getFiles());
+        }
     
     }
 
@@ -47,15 +49,16 @@ export class TopLevelProvider implements vscode.TreeDataProvider<File> {
         if (children) {
             children.forEach(element => {
                 const stats = fs.statSync(path.join(this.workspaceRoot!, element));
+
 				if (stats.isFile()) {
-                    const file = new File(element, this.workspaceRoot,  vscode.TreeItemCollapsibleState.None);
+                    const file = new File(element, this.workspaceRoot,  vscode.TreeItemCollapsibleState.None, path.join(this.workspaceRoot!, element));
 					files.push(file);
                     // console.log(file.description);
 				}
             });
         }
 
-        files.forEach(element => console.log(element.tooltip));
+        // files.forEach(element => console.log(element.tooltip));
         return files;
     }
 
@@ -63,24 +66,35 @@ export class TopLevelProvider implements vscode.TreeDataProvider<File> {
 }
 
 
-export class File extends vscode.TreeItem {
-    constructor(
-        public readonly label: string,
-        public readonly root: string,
-        public readonly collapsibleState: vscode.TreeItemCollapsibleState,
+//extension settings
+/*
+- one textbox (console.log on change)
+- one other (checkbox to change auto saving or manual)
+        - reload arrow is hidden when automatic is true
 
-    ) {
-        super(label, collapsibleState);
+^^^
+- am i creating custom settings or just changing them in the settings.json?
 
-        // Set the description
-        // this.description = this.setDescription(label);
-        this.tooltip = setDescription(label);
-        
-        // console.log(this.description);
+add icons
+built in icons in doumentation
+product icons
 
-        // this.resourceUri = vscode.Uri.file(path.join(root, label));
-
-    }
+^^^
+- used product icon reference but output is always "[object Object]"
 
 
-}
+create an issue on github repo
+make a make to implement feature
+
+associate commits to an issue
+github smart comments
+# (numnber of issue)
+in pull request message "closes #num"
+close issue
+*/
+
+/*
+dynamic programming (recursion (leetcode))
+*/
+
+
