@@ -4,7 +4,7 @@ import * as path from 'path';
 import * as readdirSync from 'fs';
 
 import { setDescription } from './utils';
-import { File } from './utils';
+import { File } from './fileItem';
 
 export class TopLevelProvider implements vscode.TreeDataProvider<File> {
 

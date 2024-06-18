@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as readdirSync from 'fs';
 import { makeGraph } from './utils';
-import { File } from './utils';
+import { File } from './fileItem';
 
 export class graphExplorer implements vscode.TreeDataProvider<File> {
 

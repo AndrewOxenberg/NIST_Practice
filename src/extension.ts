@@ -84,12 +84,12 @@ async function openFile(fileUri: vscode.Uri) {
 function logSettings(context: vscode.ExtensionContext, topLevelProvider: TopLevelProvider) { 
 	const config = vscode.workspace.getConfiguration('andrew');
 	const settingConfig = config.get(`autorefresh`);
-	console.log(`autorefresh: ${settingConfig}`);
+	// console.log(`autorefresh: ${settingConfig}`);
 
 	// context.subscriptions.forEach(subscription => subscription.dispose());
 
 	if (settingConfig === true) {
-		console.log("TRUE");
+		// console.log("TRUE");
         context.subscriptions.push(
             vscode.workspace.onDidCreateFiles(() => topLevelProvider.refresh()),
             vscode.workspace.onDidDeleteFiles(() => topLevelProvider.refresh()),
@@ -97,7 +97,7 @@ function logSettings(context: vscode.ExtensionContext, topLevelProvider: TopLeve
         );
     }
 	if (settingConfig === false) {
-		console.log("FALSE");
+		// console.log("FALSE");
 		context.subscriptions.forEach(subscription => subscription.dispose());
 	}
 }
