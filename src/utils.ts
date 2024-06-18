@@ -86,8 +86,9 @@ export class File extends vscode.TreeItem {
             };
         }
 
-        this.label = new ThemeIcon("debug-start") + " " + this.label;
-
+        this.label = `$(eye)` + " " + label;
+        this.iconPath = `$(eye)`;
+        
 
 
     }

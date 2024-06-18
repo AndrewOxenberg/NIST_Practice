@@ -7,6 +7,7 @@ import { TopLevelProvider } from './topLevelExplorer';
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
+
 	// let openCommand = vscode.commands.registerCommand('extension.openFile', (fileUri: vscode.Uri) => {
 	// 	// Open the file
 	// openFile(fileUri);});
@@ -22,10 +23,11 @@ export function activate(context: vscode.ExtensionContext) {
 	// 	openFile(fileUri);
 	// });
 
-	
-	if (rootPath) {
-		const topLevelProvider = new TopLevelProvider(rootPath);
+	let topLevelProvider: TopLevelProvider;
 
+	if (rootPath) {
+		
+		topLevelProvider = new TopLevelProvider(rootPath);
 		vscode.window.createTreeView('topLevelExplorer', {
 			treeDataProvider: topLevelProvider
 		});
@@ -33,15 +35,32 @@ export function activate(context: vscode.ExtensionContext) {
 			topLevelProvider.refresh()
 		);
 
-			
+		
+		// const config = vscode.workspace.getConfiguration('andrew');
+		// const settingConfig: string | undefined = config.get(`autorefresh`);
 
-		vscode.workspace.onDidCreateFiles(() => topLevelProvider.refresh());
-        vscode.workspace.onDidDeleteFiles(() => topLevelProvider.refresh());
-        vscode.workspace.onDidChangeWorkspaceFolders(() => topLevelProvider.refresh());
+		// // vscode.commands.executeCommand('setContext', 'andrew.autorefresh', settingConfig);
+
+		// if (settingConfig && settingConfig.localeCompare("true") === 0) {
+		// 	console.log("HERE TRUE");
+		// 	vscode.workspace.onDidCreateFiles(() => topLevelProvider.refresh());
+        // 	vscode.workspace.onDidDeleteFiles(() => topLevelProvider.refresh());
+        // 	vscode.workspace.onDidChangeWorkspaceFolders(() => topLevelProvider.refresh());
+		// }
 
 		
+
 	}
 
+	
+	context.subscriptions.push(vscode.workspace.onDidChangeConfiguration(event => {
+		if (event.affectsConfiguration('andrew.autorefresh')) {
+			logSettings(context, topLevelProvider);
+		}
+	}));
+
+	
+	
 	
 	
 }
@@ -58,8 +77,28 @@ async function openFile(fileUri: vscode.Uri) {
 	} catch (err: any) {
 		vscode.window.showErrorMessage(`Failed to open file: ${err.message}`);
 	}
-	
 
 }
 
+
+function logSettings(context: vscode.ExtensionContext, topLevelProvider: TopLevelProvider) { 
+	const config = vscode.workspace.getConfiguration('andrew');
+	const settingConfig = config.get(`autorefresh`);
+	console.log(`autorefresh: ${settingConfig}`);
+
+	// context.subscriptions.forEach(subscription => subscription.dispose());
+
+	if (settingConfig === true) {
+		console.log("TRUE");
+        context.subscriptions.push(
+            vscode.workspace.onDidCreateFiles(() => topLevelProvider.refresh()),
+            vscode.workspace.onDidDeleteFiles(() => topLevelProvider.refresh()),
+            vscode.workspace.onDidChangeWorkspaceFolders(() => topLevelProvider.refresh())
+        );
+    }
+	if (settingConfig === false) {
+		console.log("FALSE");
+		context.subscriptions.forEach(subscription => subscription.dispose());
+	}
+}
 
