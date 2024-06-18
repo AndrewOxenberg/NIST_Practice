@@ -12,6 +12,7 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
+   
     "viewsContainers": {
       "activitybar": [
         {
@@ -43,21 +44,24 @@
           "light": "resources/light/refresh.svg",
           "dark": "resources/dark/refresh.svg"
         }
+       
       }
+   
     ],
     "menus": {
       "view/title": [
         {
           "command": "topLevelExplorer.refreshEntry",
-          "group": "navigation"
+          "group": "navigation",
+           "when": "config.andrew.autorefresh == false"
         }
       ]
     },
     "configuration": [
       {
-        "title": "Top Level",
+        "title": "Andrew",
         "properties": {
-          "topLevel.autorefresh": {
+          "andrew.autorefresh": {
             "type": "boolean",
             "default": true
           }
