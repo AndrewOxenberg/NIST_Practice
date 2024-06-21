@@ -10,9 +10,8 @@
     "Other"
   ],
   "activationEvents": [],
-  "main": "./out/extension.js",
+  "main": "./dist/extension.js",
   "contributes": {
-   
     "viewsContainers": {
       "activitybar": [
         {
@@ -44,16 +43,14 @@
           "light": "resources/light/refresh.svg",
           "dark": "resources/dark/refresh.svg"
         }
-       
       }
-   
     ],
     "menus": {
       "view/title": [
         {
           "command": "topLevelExplorer.refreshEntry",
           "group": "navigation",
-           "when": "config.andrew.autorefresh == false"
+          "when": "config.andrew.autorefresh == false"
         }
       ]
     },
@@ -71,9 +68,12 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
+    "compile": "npm run check-types && node esbuild.js",
+
+    "check-types": "tsc --noEmit",
     "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
+    "pretest": "npm run compile && npm run lint ",
+    "package": "npm run check-types && node esbuild.js --production",
     "lint": "eslint src --ext ts",
     "test": "vitest"
   },
@@ -85,8 +85,17 @@
     "@typescript-eslint/parser": "^7.11.0",
     "@vscode/test-cli": "^0.0.9",
     "@vscode/test-electron": "^2.4.0",
+    "esbuild": "^0.21.5",
     "eslint": "^8.57.0",
+    "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",
-    "vitest": "^1.6.0"
-  }
+    "vitest": "^1.6.0",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AndrewOxenberg/NIST_Practice.git"
+  },
+  "publisher": "FirstTestNIST"
 }

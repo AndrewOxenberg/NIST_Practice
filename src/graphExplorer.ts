@@ -40,3 +40,14 @@ export class graphExplorer implements vscode.TreeDataProvider<File> {
     }
     
 }
+
+/*
+
+
+multimap (multiset for now)
+
+add and remove functions by key
+
+ability to detect cycles
+
+*/

@@ -21,7 +21,7 @@ export function setDescription(label: string): string {
 
 export function makeGraph(): Map<String, Set<String>> {
 
-    let map: Map<String, Set<String>>= new Map();
+    const map: Map<String, Set<String>>= new Map();
 
     map.set('A', new Set());
     map.set('B', new Set());
@@ -54,6 +54,89 @@ export function makeGraph(): Map<String, Set<String>> {
     map.get('F')?.add('H');
 
     map.get('G')?.add('H');
+
+    return map;
+}
+
+export function hasCycle(graph: Map<String, Set<String>>): boolean {
+
+    const visited = new Set();
+    const stack = new Set();
+    const parentMap = new Map();
+
+    for (const key of graph.keys()) {
+        if (dfs(key)) { 
+            return true;
+        }
+    }
+
+    return false;
+
+    function dfs(key: string | String): boolean {
+         // If the node is already in the recursion stack, a cycle is detected
+         if (stack.has(key)) {
+
+            const cyclePath = [];
+            let currentNode = key;
+            do {
+                cyclePath.push(currentNode);
+                currentNode = parentMap.get(currentNode);
+            } while (currentNode !== key);
+            cyclePath.push(key); // To complete the cycle
+            cyclePath.reverse();
+            console.log(cyclePath);
+
+            return true;
+        }
+
+        // If the node is already visited and not in the recursion stack, no cycle here
+        if (visited.has(key)) {
+
+            console.log("No Cycle");
+            return false;
+        }
+
+        // Mark the node as visited and add it to the recursion stack
+        visited.add(key);
+        stack.add(key);
+
+        // Recur for all the vertices adjacent to this vertex
+        const neighbors = graph.get(key);
+        if (neighbors) {
+            for (const neighbor of neighbors) {
+                parentMap.set(neighbor, key);
+                if (dfs(neighbor)) {
+                    return true;
+                }
+            }
+        }
+
+        // Remove the node from the recursion stack
+        stack.delete(key);
+        return false;
+    }
+
+
+}
+
+export function makeJSONGraph(path: string): Map<String, Set<String>> {
+
+    const json = require(path);
+    const map: Map<String, Set<String>> = new Map();
+    console.log(json);
+
+
+    for (const key in json) {
+        if (json.hasOwnProperty(key)) {
+            const innerSet: Set<String> = new Set();
+            if (json[key].nodes) {
+                for (const node of json[key].nodes) {
+                    innerSet.add(node);
+                }
+            }
+            map.set(key, innerSet);
+        }
+    }
 
     return map;
 }
